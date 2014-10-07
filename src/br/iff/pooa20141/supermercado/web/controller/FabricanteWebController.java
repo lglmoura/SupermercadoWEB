@@ -1,4 +1,4 @@
-package br.iff.pooa20141supermercado.web.controller;
+package br.iff.pooa20141.supermercado.web.controller;
 
 import java.util.List;
 
