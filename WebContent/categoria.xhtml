@@ -7,25 +7,29 @@
 
 
 <h:head>
-	<title>Gerenciador de Setors</title>
+	<title>Gerenciador de Categorias</title>
 	<link type="text/css" rel="stylesheet" href="dot-luv/skin.css" />
 </h:head>
 <h:body>
 
-	<p:fieldset legend="Gerenciar Setor" toggleable="true"
+	<p:fieldset legend="Gerenciar Categoria" toggleable="true"
 		toggleSpeed="500">
 		<h:form id="form">
 			<center>
-				<p:dataTable id="tabela" var="setor"
-					value="#{setorPrime.allSetor}" rowKey="#{setor.uid}"
+				<p:dataTable id="tabela" var="categoria"
+					value="#{categoriaPrime.allCategoria}" rowKey="#{categoria.uid}"
 					selectionMode="single" scrollable="true" scrollHeight="300"
-					scrollWidth="850" selection="#{setorPrime.setorSelecionado}">
+					scrollWidth="850" selection="#{categoriaPrime.categoriaSelecionado}">
 					<p:column headerText="Codigo" width="250">
-						<h:outputText value="#{setor.uid}" />
+						<h:outputText value="#{categoria.uid}" />
 					</p:column>
 
 					<p:column headerText="Nome">
-						<h:outputText value="#{setor.descricao}" />
+						<h:outputText value="#{categoria.descricao}" />
+					</p:column>
+
+					<p:column headerText="Setor">
+						<h:outputText value="#{categoria.setor.descricao}" />
 					</p:column>
 
 				</p:dataTable>
@@ -33,10 +37,10 @@
 		</h:form>
 		<center>
 			<p:commandButton value="Cadastrar" icon="ui-icon-document"
-				update=":fsetor:displayCadastro" oncomplete="cadastro.show()" />
+				update=":fcategoria:displayCadastro" oncomplete="cadastro.show()" />
 
 			<p:commandButton value="Alterar" icon="ui-icon-search"
-				oncomplete="altera.show()" update=":fsetorA:displayaltera" />
+				oncomplete="altera.show()" update=":fcategoriaA:displayaltera" />
 
 			<p:commandButton value="Deletar" icon="ui-icon-disk"
 				oncomplete="deleta.show()" update=":displaydeleta" />
@@ -49,23 +53,23 @@
 	<p:growl id="menssagem" showDetail="true" life="3000" for="msg" />
 
 	<!--............................................................................DIALOGOS E FUNÇÕES-->
-	<!--CADASTRO Setor-->
-	<p:dialog id="dialogCadastro" header="Cadastro de Setor"
+	<!--CADASTRO Categoria-->
+	<p:dialog id="dialogCadastro" header="Cadastro de Categoria"
 		widgetVar="cadastro" resizable="false" width="500" showEffect="clip"
 		hideEffect="explode">
-		<h:form id="fsetor">
+		<h:form id="fcategoria">
 			<h:panelGrid id="displayCadastro" border='1' columns="2"
 				styleClass="panelGrid" rowClasses="panelFirstLine,panelNextLine">
 				<h:outputLabel value="Codigo" />
-				<p:inputText value="#{setorPrime.setor.uid}"
+				<p:inputText value="#{categoriaPrime.categoria.uid}"
 					style=" width : 325px;" />
 
 				<h:outputLabel value="Nome" />
-				<p:inputText value="#{setorPrime.setor.descricao}"
+				<p:inputText value="#{categoriaPrime.categoria.descricao}"
 					style=" width : 325px;" />
 
 				<p:commandButton value="Cadastrar" icon="ui-icon-search"
-					action="#{setorPrime.salva()}"
+					action="#{categoriaPrime.salva()}"
 					update=":form:tabela,:menssagem" />
 
 			</h:panelGrid>
@@ -82,20 +86,20 @@
 
 	<p:dialog id="dialogaltera" header="Altera" widgetVar="altera"
 		resizable="false" width="500" showEffect="clip" hideEffect="explode">
-		<h:form id="fsetorA">
+		<h:form id="fcategoriaA">
 			<h:panelGrid id="displayaltera" border='1' columns="2"
 				styleClass="panelGrid" rowClasses="panelFirstLine,panelNextLine">
 				<h:outputLabel value="Codigo" />
-				<p:outputLabel value="#{setorPrime.setorSelecionado.uid}"
+				<p:outputLabel value="#{categoriaPrime.categoriaSelecionado.uid}"
 					style=" width : 325px;" />
 
 				<h:outputLabel value="Nome" />
-				<p:inputText value="#{setorPrime.setorSelecionado.descricao}"
+				<p:inputText value="#{categoriaPrime.categoriaSelecionado.descricao}"
 					style=" width : 325px;" />
 
 
 				<p:commandButton value="Alterar" icon="ui-icon-search"
-					action="#{setorPrime.update()}"
+					action="#{categoriaPrime.update()}"
 					update=":form:tabela,:menssagem" />
 
 
@@ -109,12 +113,12 @@
 
 
 	<!--DELEÇÂO DE CONTATO-->
-	<p:dialog id="dialogDeleta" header="Deletar Setor" widgetVar="deleta"
+	<p:dialog id="dialogDeleta" header="Deletar Categoria" widgetVar="deleta"
 		width="500" showEffect="clip" hideEffect="fold">
 		<h:panelGrid id="displaydeleta" columns="2" cellpadding="4">
-			<h:outputText value="Deseja exluir realmente o Setor?" />
+			<h:outputText value="Deseja exluir realmente o Categoria?" />
 			<br />
-			<p:commandButton value="Sim" action="#{setorPrime.delete()}"
+			<p:commandButton value="Sim" action="#{categoriaPrime.delete()}"
 				update=":form:tabela,:menssagem" />
 			<p:commandButton value="Não" oncomplete="deleta.hide()"
 				update=":form:tabela,:menssagem" />
