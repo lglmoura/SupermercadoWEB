@@ -29,7 +29,7 @@
 					</p:column>
 
 					<p:column headerText="Setor">
-						<h:outputText value="#{categoria.setor.descricao}" />
+						<h:outputText value="#{categoria.setorBean.descricao}" />
 					</p:column>
 
 				</p:dataTable>
@@ -64,9 +64,22 @@
 				<p:inputText value="#{categoriaPrime.categoria.uid}"
 					style=" width : 325px;" />
 
-				<h:outputLabel value="Nome" />
+				<h:outputLabel value="Descrição" />
 				<p:inputText value="#{categoriaPrime.categoria.descricao}"
 					style=" width : 325px;" />
+
+				<h:outputLabel value="Setor" />
+				<p:selectOneMenu id="setor"
+					value="#{categoriaPrime.categoria.setorBean}"
+					converter="entityConverter" effect="fade" var="i" filter="true" style="width:260px" panelStyle="width:250px"
+					filterMatchMode="startsWith">
+					<f:selectItem itemValue="" itemLabel="Selecione Setor" />
+					<f:selectItems value="#{categoriaPrime.allSetor}" var="setorBean"
+						itemLabel="#{setorBean.descricao}" itemValue="#{setorBean}" />
+						<p:column>
+						   #{i.uid} - #{i.descricao}
+						</p:column>
+				</p:selectOneMenu>
 
 				<p:commandButton value="Cadastrar" icon="ui-icon-search"
 					action="#{categoriaPrime.salva()}"
@@ -93,9 +106,22 @@
 				<p:outputLabel value="#{categoriaPrime.categoriaSelecionado.uid}"
 					style=" width : 325px;" />
 
-				<h:outputLabel value="Nome" />
+				<h:outputLabel value="Descrição" />
 				<p:inputText value="#{categoriaPrime.categoriaSelecionado.descricao}"
 					style=" width : 325px;" />
+					
+			    <h:outputLabel value="Setor" />
+				<p:selectOneMenu id="setor"
+					value="#{categoriaPrime.categoria.setorBean}"
+					converter="entityConverter" effect="fade" var="i" filter="true" style="width:160px" panelStyle="width:150px"
+					filterMatchMode="startsWith">
+					<f:selectItem itemValue="" itemLabel="Selecione Setor" />
+					<f:selectItems value="#{categoriaPrime.allSetor}" var="setor"
+						itemLabel="#{setor.descricao}" itemValue="#{setor}" />
+						<p:column>
+						   #{i.descricao}
+						</p:column>
+				</p:selectOneMenu> 		
 
 
 				<p:commandButton value="Alterar" icon="ui-icon-search"
