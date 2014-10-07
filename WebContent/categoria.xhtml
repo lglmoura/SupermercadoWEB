@@ -20,7 +20,7 @@
 					value="#{categoriaPrime.allCategoria}" rowKey="#{categoria.uid}"
 					selectionMode="single" scrollable="true" scrollHeight="300"
 					scrollWidth="850" selection="#{categoriaPrime.categoriaSelecionado}">
-					<p:column headerText="Codigo" width="250">
+					<p:column headerText="Codigo" width="150">
 						<h:outputText value="#{categoria.uid}" />
 					</p:column>
 
@@ -62,11 +62,11 @@
 				styleClass="panelGrid" rowClasses="panelFirstLine,panelNextLine">
 				<h:outputLabel value="Codigo" />
 				<p:inputText value="#{categoriaPrime.categoria.uid}"
-					style=" width : 325px;" />
+					style=" width : 125px;" />
 
 				<h:outputLabel value="Descrição" />
 				<p:inputText value="#{categoriaPrime.categoria.descricao}"
-					style=" width : 325px;" />
+					style=" width : 225px;" />
 
 				<h:outputLabel value="Setor" />
 				<p:selectOneMenu id="setor"
@@ -113,13 +113,13 @@
 			    <h:outputLabel value="Setor" />
 				<p:selectOneMenu id="setor"
 					value="#{categoriaPrime.categoria.setorBean}"
-					converter="entityConverter" effect="fade" var="i" filter="true" style="width:160px" panelStyle="width:150px"
+					converter="entityConverter" effect="fade" var="i" filter="true" style="width:260px" panelStyle="width:250px"
 					filterMatchMode="startsWith">
 					<f:selectItem itemValue="" itemLabel="Selecione Setor" />
-					<f:selectItems value="#{categoriaPrime.allSetor}" var="setor"
-						itemLabel="#{setor.descricao}" itemValue="#{setor}" />
+					<f:selectItems value="#{categoriaPrime.allSetor}" var="setorBean"
+						itemLabel="#{setorBean.descricao}" itemValue="#{setorBean}" />
 						<p:column>
-						   #{i.descricao}
+						   #{i.uid} - #{i.descricao}
 						</p:column>
 				</p:selectOneMenu> 		
 

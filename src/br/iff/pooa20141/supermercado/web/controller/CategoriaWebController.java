@@ -87,6 +87,7 @@ public class CategoriaWebController {
 
 	public void update() {
 
+		
 		if (jcategoria.find(categoriaSelecionado.getUid()) == null) {
 			FacesContext.getCurrentInstance().addMessage("frmTeste:msgOK",
 					new FacesMessage("categoria não Existe"));
@@ -100,6 +101,7 @@ public class CategoriaWebController {
 		}
 		RequestContext.getCurrentInstance().execute("altera.hide()");
 		;
+		
 	}
 
 	public CategoriaWebController() {
